@@ -5,7 +5,7 @@ This is a very simple REPL for Firefox OS. It allows you to list the running app
 
 *You will need a device running a debug version of Firefox OS with Marionette support included*
 
-I put less than an hour into it so far. Will make much bigger improvements int he coming days.
+I put less than an hour into it so far. Will make much bigger improvements in the coming days.
 
 If you have feature requests then please submit pull requests or file a bug.
 
@@ -13,6 +13,9 @@ How to get it going?
 ====================
 
 One time setup of a virtualenv that contains the marionette client:
+(If you don't want to config the whole B2G project, please connect to
+       https://pypi.python.org/pypi/marionette_client/
+ get the most up-to-date marionette client)
 
 ```
 $ virtualenv env
@@ -41,7 +44,7 @@ Connect to a specific app and execute commands:
 
 ```
 $ source env/bin/activate
-(env) $ ./fxos-repl.py connect app://gallery.gaiamobile.org/index.html
+(env) $ ./fxos-repl.py connect gallery     or    (env) $ ./fxos-repl.py connect app://gallery.gaiamobile.org/index.html
 Connected to app://gallery.gaiamobile.org/index.html
 >>> navigator.userAgent
 Mozilla/5.0 (Mobile; rv:18.0) Gecko/18.0 Firefox/18.0
