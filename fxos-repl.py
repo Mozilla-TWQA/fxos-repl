@@ -18,15 +18,16 @@ def connect_to_iframe(m, name):
     iframes = m.execute_script("return document.getElementsByTagName('iframe')")
     for idx in range(0,iframes['length']):
         iframe = iframes[str(idx)]
-        if iframe.get_attribute('src') == name:
+        if name in iframe.get_attribute('src'):
             m.switch_to_frame(iframe)
             return True
+    return False
 
 def start_repl(m):
     try:
         while True:
             s = raw_input(">>> ")
-            if s is None:
+            if s == "" or s == "exit" or s == "quit":
                 break
             try:
                 print m.execute_script("return " + s, new_sandbox=False)
@@ -54,6 +55,8 @@ if __name__ == "__main__":
         if connect_to_iframe(m, sys.argv[2]):
             print "Connected to " + sys.argv[2]
             start_repl(m)
+        else:
+            print "Wrong iframe to connect!"
     else:
         usage()
         sys.exit(1)
